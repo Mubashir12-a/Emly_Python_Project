@@ -41,11 +41,30 @@
                  Display “You won”.
                  Display the secret word.
                  End the loop.
-
 ### 7)  After loop ends:
-
 ### 8)  If attempts become 0:
 ### 9)  Display “You lost”.
 ### 10)  Display the secret word.
-
 ### 11)  Stop the program.
+
+
+[ ] Code (Main Program)
+
+### Inside code, clearly show:
+
+- a) Random Words Array
+    - Predefined list of words
+    - Random selection logic
+- b) Guess Handling
+    - Accept one letter
+    - Convert to lowercase
+    - Validate input
+    - Check repeated guesses
+- c) Display Function
+    - Build _ _ a _ _ output
+    - Reveal letters correctly
+- d) Game Loop
+    - Runs until win or attempts = 0
+- e) Win / Lose Logic
+    - All letters revealed → win
+    - Attempts finished → lose
