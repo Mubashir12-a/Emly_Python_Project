@@ -4,7 +4,10 @@
 
 <hr><hr>
 
-### 🎮 Main Game Flow (Function-Based):
+## 🎮 Main Game Flow (Function-Based):
+
+<hr>
+
 ### 🟢 gameLoop() → Person 3 starts
 ### 👉 getRandomWord() → Person 1
 ### 👉 initializeGameState() → Person 1
@@ -17,11 +20,11 @@
 ### ♻️ isRepeatedGuess(guess, guessedLetters) → Person 2
 ### 🔁 if repeated → ask again (Person 2)
 ### ⚙️ processGuess(guess, word, guessedLetters, attempts) → Person 2
-####     → updates guessedLetters and attempts
+        - → updates guessedLetters and attempts
 ### 🏆 checkWinCondition(word, guessedLetters) → Person 1
-####     → if true → showFinalResult(true) → Person 3 → stop
+        - → if true → showFinalResult(true) → Person 3 → stop
 ### 💀 checkLoseCondition(attempts) → Person 1
-###      → if true → showFinalResult(false) → Person 3 → stop
+        - → if true → showFinalResult(false) → Person 3 → stop
 ### 🔁 loop continues
 ### 🛑 gameLoop() → Person 3 ends
 
@@ -35,114 +38,119 @@
 
 
 
-📌 Project Work Assignment & Development Plan:
-________________________________________
-🧠 Step 1: Understand the Assigned Responsibility
-•	Carefully understand only the functions assigned to you
-•	Clearly document:
-o	What your functions do
-o	What they accept (inputs)
-o	What they return (outputs)
-•	Write this understanding in a text file / Word document
-________________________________________
-🔄 Step 2: Function Flowcharts
-•	Draw a separate flowchart for each assigned function
-•	Each flowchart must:
-o	Show start → logic → return/end
-o	Be independent (no dependency on other functions)
-________________________________________
-🧾 Step 3: Pseudocode
-•	Write pseudocode for each function
-•	One function = one pseudocode block
-•	Keep it readable and language-independent
-________________________________________
-🧩 Step 4: General Game Flowchart
-•	After understanding all functions:
-o	Draw one general flowchart
-o	Show how all functions interact inside gameLoop()
-________________________________________
-💻 Step 5: Coding (Individual Files)
-•	Implement only your assigned functions
-•	Create your own file:
-•	AssignedWork_<your_name>.py
-•	Follow function names exactly as defined
-•	No extra logic, no unrelated code
-________________________________________
-🧪 Step 6: Self-Testing
-•	Manually test each of your functions
-•	Use dummy values (hardcoded data)
-•	Verify logic using print statements
-•	Fix issues before integration
-________________________________________
-🔗 Step 7: Integration
-•	Combine all individual files into:
-•	main.py
-•	Align function calls inside gameLoop()
-•	Resolve conflicts (variables, returns, flow)
-________________________________________
-✅ Step 8: Test Cases
-•	Run main.py with multiple test cases:
-o	Correct guesses
-o	Wrong guesses
-o	Repeated input
-o	Win scenario
-o	Lose scenario
-•	Record test cases and outcomes clearly
-________________________________________
-📘 Step 9: Documentation
-•	Update README.md with:
-o	Project overview
-o	Function list
-o	File structure
-o	How to run the project
-o	Test cases summary
-o	Team member responsibilities
+## 📌 Project Work Assignment & Development Plan:
 
+<hr><hr>
 
+#### 🧠 Step 1: Understand the Assigned Responsibility:
+        - •	Carefully understand only the functions assigned to you
+        - •	Clearly document:
+            - o	What your functions do
+            - o	What they accept (inputs)
+            - o	What they return (outputs)
+        - •	Write this understanding in a text file / Word document
+<hr>
 
+#### 🔄 Step 2: Function Flowcharts:
+        - •	Draw a separate flowchart for each assigned function
+        - •	Each flowchart must:
+            - o	Show start → logic → return/end
+            - o	Be independent (no dependency on other functions)
+<hr>
 
+#### 🧾 Step 3: Pseudocode:
+        - •	Write pseudocode for each function
+        - •	One function = one pseudocode block
+        - •	Keep it readable and language-independent
+<hr>
 
+#### 🧩 Step 4: General Game Flowchart:
+        - •	After understanding all functions:
+            - o	Draw one general flowchart
+            - o	Show how all functions interact inside gameLoop()
+<hr>
 
+#### 💻 Step 5: Coding (Individual Files):
+        - •	Implement only your assigned functions
+        - •	Create your own file:
+        - •	AssignedWork_<your_name>.py
+        - •	Follow function names exactly as defined
+        - •	No extra logic, no unrelated code
+<hr>
 
+#### 🧪 Step 6: Self-Testing:
+        - •	Manually test each of your functions
+        - •	Use dummy values (hardcoded data)
+        - •	Verify logic using print statements
+        - •	Fix issues before integration
+<hr>
 
+#### 🔗 Step 7: Integration:
+        - •	Combine all individual files into:
+        - •	main.py
+        - •	Align function calls inside gameLoop()
+        - •	Resolve conflicts (variables, returns, flow)
+<hr>
 
+#### ✅ Step 8: Test Cases:
+        - •	Run main.py with multiple test cases:
+            - o	Correct guesses
+            - o	Wrong guesses
+            - o	Repeated input
+            - o	Win scenario
+            - o	Lose scenario
+        - •	Record test cases and outcomes clearly
+<hr>
 
+#### 📘 Step 9: Documentation:
+        - •	Update README.md with:
+            - o	Project overview
+            - o	Function list
+            - o	File structure
+            - o	How to run the project
+            - o	Test cases summary
+            - o	Team member responsibilities
 
+<hr><hr><hr>
 
+## 👤 Person 1 – Game Data & Core Logic:
+#### Scope: Things that decide what the game is.
+        - •	Random words array (predefined list)
+        - •	Random word selection logic
+        - •	Store selected word
+        - •	Track attempts left
+        - •	Win / lose condition check (all letters revealed OR attempts = 0)
 
-👤 Person 1 – Game Data & Core Logic
-Scope: Things that decide what the game is.
-•	Random words array (predefined list)
-•	Random word selection logic
-•	Store selected word
-•	Track attempts left
-•	Win / lose condition check (all letters revealed OR attempts = 0)
-🧠 Owns the brain. Breaks it if careless.
-Responsibilities:
-•	getRandomWord()
-•	initializeGameState()
-•	checkWinCondition()
-•	checkLoseCondition()
-Handles:
-•	Predefined words array
-•	Random word selection
-•	Attempts count
-•	Win / lose evaluation
+    - 🧠 Owns the brain. Breaks it if careless.
+<hr>
 
-How to test alone:
-•	Hardcode a word: "apple"
-•	Hardcode attempts: 5
+#### Responsibilities:
+        - •	getRandomWord()
+        - •	initializeGameState()
+        - •	checkWinCondition()
+        - •	checkLoseCondition()
+<hr>
 
-Manual checks:
-•	Call getRandomWord() → prints a valid word
-•	Call checkWinCondition(['a','p','l','e'], "apple") → should return true
-•	Call checkLoseCondition(0) → should return true
+#### Handles:
+        - •	Predefined words array
+        - •	Random word selection
+        - •	Attempts count
+        - •	Win / lose evaluation
+<hr>
 
-📌 Use print() to verify outputs.
+#### How to test alone:
+        - •	Hardcode a word: "apple"
+        - •	Hardcode attempts: 5
+<hr>
 
+#### Manual checks:
+        - •	Call getRandomWord() → prints a valid word
+        - •	Call checkWinCondition(['a','p','l','e'], "apple") → should return true
+        - •	Call checkLoseCondition(0) → should return true
 
-________________________________________
+    - 📌 Use print() to verify outputs.
 
+<hr><hr><hr>
 
 
 
