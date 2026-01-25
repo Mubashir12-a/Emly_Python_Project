@@ -1,19 +1,14 @@
-# 📌 Important Project Note:
-        -   Every step must be implemented as its own function. No spaghetti logic. No giant main() doing everything.
-            This is a pure function-based project.
+> [!NOTE]
+> 📌 Important Project Note:
+>        -   Every step must be implemented as its own function. No spaghetti logic. No giant main() doing everything.
+>            This is a pure function-based project.
+<br>
 
-<hr><hr><br>
-
-# 👤👤👤 Contributors:
-<pre>
-    1) Hamaad 
-    2) Shezan 
-    3) Mubashir 
-</pre>
-
-[VISIT](https://example.com)
-[VISIT](https://example.com)
-[VISIT](https://example.com)
+> [!IMPORTANT]
+> ### 👤👤👤 Contributors:
+>    ## 1) Hamaad ---- ![Type 1](https://img.shields.io/static/v1?label=|&message=GITHUB&color=ff&style=plastic&logo=github&logo-color=white)
+>    ## 2) Shezan ---- ![Type 1](https://img.shields.io/static/v1?label=|&message=GITHUB&color=ff&style=plastic&logo=github&logo-color=white)
+>    ## 3) Mubashir -- ![Type 1](https://img.shields.io/static/v1?label=|&message=GITHUB&color=ff&style=plastic&logo=github&logo-color=white)
 
 <hr><hr><br>
 
