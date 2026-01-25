@@ -68,3 +68,4 @@
 - e) Win / Lose Logic
     - All letters revealed → win
     - Attempts finished → lose
+    Tested by <hammad> - working fine.
