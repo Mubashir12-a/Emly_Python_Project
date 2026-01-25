@@ -6,10 +6,14 @@
 
 # 👤👤👤 Contributors:
 <pre>
-    1) Hamaad -- [VISIT](https://example.com)
-    2) Shezan -- [VISIT](https://example.com)
-    3) Mubashir -- [VISIT](https://example.com)
+    1) Hamaad 
+    2) Shezan 
+    3) Mubashir 
 </pre>
+
+[VISIT](https://example.com)
+[VISIT](https://example.com)
+[VISIT](https://example.com)
 
 <hr><hr><br>
 
