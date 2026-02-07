@@ -93,3 +93,5 @@ EMLY_PYTHON_PROJECT/
     - All letters revealed → win
     - Attempts finished → lose
     Tested by <hammad> - working fine.
+## Contributor
+Mohammad Hamad Wani
