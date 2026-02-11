@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./README_s/Contributors"
+    ]
+}
