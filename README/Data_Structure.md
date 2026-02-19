@@ -1,142 +1,129 @@
-# 📌 DSA used in Hangman (Project-E):
+# Data Structures and Control Flow in Hangman
 
+This document maps the project implementation to the data structures and core control concepts currently used in code.
 
-> > ## 1️⃣ Array / List
-> >
-> > - Used as: words list
->
-> > ### Structure:
-> >  - Linear data structure
-> >  - Indexed
-> >  - Stores same-type elements
->
-> > ### Why used here:
-> >  - Store predefined words
-> >  - Easy random access
->
-> > ### How used:
-> > ```
-> > words = ["python", "school", "kashmir", "laptop", "logic"]
-> > ```
->
-> > > ### Purpose in project:
-> >  - Computer randomly selects one word
-> >  - Base data source for the game
+## 1) List
 
+Used as:
+- `WordsList` in `Gameloop.py`
 
-> > ## 2️⃣ String
-> >
-> >  - Used as: secret_word, user input
-> 
-> > ### Structure:
-> >  - Immutable sequence of characters
-> 
-> > ### Why used:
-> >  - Words are character sequences
-> >  - Easy comparison and iteration
-> 
-> > ### How used
-> >  - secret_word = "banana"
-> 
-> > ### Purpose:
-> >  - Compare guessed letters
-> >  - Build display word
+Why it is used:
+- Stores candidate words in one indexed collection
+- Works directly with `random.choice()` for word selection
 
+Example:
+```python
+WordsList = ["apple", "banana", "grapes", "orange", "mango"]
+```
 
-> > ## 3️⃣ Set
-> >
-> >  - Used as: guessed_letters, wrong_letters
-> 
-> > ### Structure:
-> >  - Unordered
-> >  - No duplicate elements
-> 
-> > ### Why used (VERY IMPORTANT):
-> >  - Automatically prevents repeated guesses
-> >  - Fast lookup
-> 
-> > ### How used:
-> >  - guessed_letters = set()
-> >  - wrong_letters = set()
-> 
-> > ### Purpose:
-> >  - Track guessed letters
-> >  - Detect repeated guesses instantly
+## 2) String
 
+Used as:
+- `selected_word`
+- `guess` input from player
 
-> > ## 4️⃣ Integer:
-> > 
-> >  - Used as: attempts_left
-> 
-> > ### Structure:
-> >  - Primitive data type
-> 
-> > ### Why used:
-> >  - Count remaining chances
-> 
-> > ### How used:
-> >  - attempts_left = 6
-> 
-> > ### Purpose:
-> >  - Win/Loss decision control
+Why it is used:
+- Secret word is a sequence of characters
+- Easy per-letter traversal and comparison in loops
 
+Example:
+```python
+for letter in selected_word:
+    if guess == letter:
+        ...
+```
 
-> > ## 5️⃣ Loop (While Loop):
-> >
-> >  - Used as: Main game loop
-> 
-> > ### Structure:
-> >  - Iterative control structure
-> 
-> > ### Why used:
-> >  - Game continues until win or lose
-> 
-> > ### How used:
-> >  - while attempts_left > 0:
-> 
-> > ### Purpose:
-> >  - Repeated gameplay
-> >  - Continuous user input handling
+## 3) Set
 
+Used as:
+- `guessed_letters`
+- `Wrong_letters`
 
-> > ## 6️⃣ Conditional Statements (Decision Making):
-> >  - Used as: if / elif / else
-> 
-> > ### Why used:
-> >  - Check correct/wrong guesses
-> >  - Validate input
-> >  - Win/Lose detection
-> 
-> > ### Purpose:
-> >  - Game logic flow control
+Why it is used:
+- No duplicates by design
+- Fast membership checks (`in`) for repeated guesses and win logic
 
+Examples:
+```python
+guessed_letters = set()
+Wrong_letters = set()
+```
 
-> > ## 7️⃣ Function (Modular Design):
-> >
-> >  - Used as: pick_word(), get_display_word() etc.
-> 
-> > ### Structure:
-> >  - Block of reusable code
-> 
-> > ### Why used:
-> >  - Code reusability
-> >  - Clean structure
-> >  - Easy debugging
-> 
-> > ### Purpose:
-> >  - Separate concerns
-> >  - Improve readability
+## 4) Integer
 
-## 🧠 DSA Mapping Table:
-### 🧠 Data Structures & Concepts Used:
+Used as:
+- `attempts_left`
 
-| DSA Concept | Used For | Purpose / Reason |
-| :---: | :---: | :---: |
-| List (Array) | Store word list | Allows random selection of words |
-| String | Secret word & input | Character comparison and traversal |
-| Set | Guessed letters | Prevents duplicate guesses, fast lookup |
-| Set | Wrong letters | Track incorrect guesses separately |
-| Integer | Attempts left | Controls win/loss condition |
-| While Loop | Game loop | Keeps game running until win/lose |
-| Conditional Statements | Decision making | Handles correct/wrong guesses |
-| Functions | Modular code | Improves readability and reuse |
+Why it is used:
+- Counter for remaining wrong attempts
+- Directly drives lose condition
+
+Example:
+```python
+attempts_left = 5
+attempts_left -= 1
+```
+
+## 5) While Loop
+
+Used as:
+- Main gameplay loop in `Gameloop.py`
+
+Current logic:
+```python
+while not checkLoseCondition(attempts_left) and not checkWinCondition(guessed_letters, selected_word):
+    ...
+```
+
+Why it is used:
+- Continues game until either lose or win state is reached
+
+## 6) Conditional Statements
+
+Used as:
+- Input validation
+- Repeated guess checks
+- Guess correctness checks
+- Start/exit decisions in `Main.py`
+
+Examples:
+- `if validateGuess(guess):`
+- `if isRepeatedGuess(...):`
+- `if Player_Mood == 'Y' or Player_Mood == 'y':`
+
+## 7) Functions (Modular Design)
+
+Used as:
+- Isolate game responsibilities into reusable units
+
+Key functions in `Main_Checked_Functions.py`:
+- `getUserGuess`
+- `initializeGameState`
+- `displayWordProgress`
+- `processGuess`
+- `validateGuess`
+- `isRepeatedGuess`
+- `getRandomWord`
+- `checkLoseCondition`
+- `checkWinCondition`
+- `showFinalResult`
+
+Key function in `Gameloop.py`:
+- `gameLoop`
+
+Why it is used:
+- Better readability
+- Easier testing and debugging
+- Clear separation between flow control and helper logic
+
+## Mapping Table
+
+| Concept | Where Used | Purpose |
+|---|---|---|
+| List | `WordsList` | Stores all candidate words |
+| String | `selected_word`, `guess` | Character-by-character gameplay logic |
+| Set | `guessed_letters`, `Wrong_letters` | Prevent duplicates and enable fast lookup |
+| Integer | `attempts_left` | Tracks remaining attempts |
+| While loop | `gameLoop()` | Runs game until win/lose |
+| Conditionals | Across main and helper functions | Drives decisions and state updates |
+| Functions | `Main.py`, `Gameloop.py`, `Main_Checked_Functions.py` | Modular, maintainable design |

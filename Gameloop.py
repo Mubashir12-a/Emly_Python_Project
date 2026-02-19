@@ -1,4 +1,4 @@
-from TestMain import *
+from Main_Checked_Functions import *
 
 selected_word = ''
 attempts_left = 0
@@ -15,7 +15,6 @@ Wrong_letters = set()
 
 
 def gameLoop():     
-    
     global selected_word, guessed_letters, attempts_left, User_Guess, Wrong_letters, WordsList
        
        
@@ -23,21 +22,10 @@ def gameLoop():
     displayWordProgress(selected_word, guessed_letters, attempts_left)
     
     
-    while checkLoseCondition(attempts_left) != True:
+    while not checkLoseCondition(attempts_left) and not checkWinCondition(guessed_letters, selected_word):
         User_Guess = getUserGuess(guessed_letters, Wrong_letters)
-        
         guessed_letters, Wrong_letters, attempts_left = processGuess(User_Guess, selected_word, guessed_letters, Wrong_letters, attempts_left)
-        print(guessed_letters, Wrong_letters, attempts_left)
-        
         displayWordProgress(selected_word, guessed_letters, attempts_left)
-            
-            
-    
-    # Issue Program not stoping if word letters are guessed all correct it stops only when attempts reach to 0
-    
-    
-    
-gameLoop()
-    
-    
-
+        
+    showFinalResult(checkWinCondition(guessed_letters, selected_word), selected_word)
+    print(f"\033[33mWrong Guess: {Wrong_letters}\n\033[37m")

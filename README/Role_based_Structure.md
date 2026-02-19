@@ -1,49 +1,55 @@
-## 🧠 Data Structures Usage (Person-wise Breakdown)
+# Role-Based Structure
 
-### 👤 Person 1 (Mubashir) – Game Data & Core Logic
+This document reflects contributor responsibilities based on the actual files inside `Contributors/` and final project integration.
 
-| Data Structure | Used In | Used For | How It Is Used |
-|---------------|--------|----------|----------------|
-| List | getRandomWord() | Store predefined words | Randomly selects one word from list |
-| String | secret_word | Store selected word | Used for comparisons and win checking |
-| Integer | attempts_left | Track remaining attempts | Decremented on wrong guesses |
-| Set / List | guessed_letters | Track guessed characters | Checked to verify win condition |
-| Boolean | checkWinCondition() | Win status | Returns True if all letters revealed |
-| Boolean | checkLoseCondition() | Lose status | Returns True if attempts = 0 |
+## Shezan - Input and Guess Processing
 
----
+Source file:
+- `Contributors/Shezan/Shezan_Code.py`
 
-### 👤 Person 2 (Shezan) – Input & Guess Handling
+Implemented responsibilities:
+- `getUserGuess()`
+- `validateGuess(guess)`
+- `isRepeatedGuess(guess, guessed_letters)`
+- `processGuess(guess, secret_word, guessed_letters, wrong_letters, attempts_left)`
 
-| Data Structure | Used In | Used For | How It Is Used |
-|---------------|--------|----------|----------------|
-| String | getUserGuess() | Store user input | Converted to lowercase |
-| Set | guessed_letters | Prevent repeated guesses | Fast membership check |
-| Set | wrong_letters | Track incorrect guesses | Helps manage attempts |
-| Integer | attempts_left | Reduce attempts | Decremented on wrong input |
-| Boolean | validateGuess() | Input validation | Ensures single alphabet input |
-| Boolean | isRepeatedGuess() | Duplicate detection | Prevents attempt reduction |
+Scope owned:
+- User input handling
+- Guess validation rules
+- Repeated-guess detection
+- Guess result processing and attempt deduction
 
----
+## Hamaad (Hammad) - Display and End-State Checks
 
-### 👤 Person 3 (Hamaad) – Display & Game Loop
+Source file:
+- `Contributors/Hamaad/Hamaad_Code.py`
 
-| Data Structure | Used In | Used For | How It Is Used |
-|---------------|--------|----------|----------------|
-| String | displayWordProgress() | Word display | Reveals guessed letters, hides others |
-| List | display build | Character-wise display | Builds `_ _ a _ _` format |
-| Integer | attempts_left | Status display | Shows remaining attempts |
-| While Loop | gameLoop() | Game control | Runs until win or lose |
-| Boolean | game state | Loop control | Stops loop on win/lose |
-| String | showFinalResult() | Final output | Displays win or lose message |
+Implemented responsibilities:
+- `displayWordProgress(word, guessed_letters, attempts_left)`
+- `showFinalResult(is_win, word)`
+- `checkWinCondition(guessed_letters, selected_word)`
+- `checkLoseCondition(attempts_left)`
 
----
+Scope owned:
+- Word progress UI rendering
+- Final win/lose message display
+- Win/lose condition helpers
 
-## 📌 Summary
+## Mubashir - Everything Else (Core Ownership)
 
-- **Lists** → word storage & display building  
-- **Sets** → fast lookup, no duplicate guesses  
-- **Strings** → word handling & input  
-- **Integers** → attempts & scoring logic  
-- **Booleans** → win/lose control  
-- **Loops & Conditions** → game flow
+Core ownership and remaining responsibilities:
+- Project architecture and module organization
+- Integration of contributor functions into final runnable modules
+- Main entry flow and start/exit handling in `Main.py`
+- Game orchestration in `Gameloop.py`
+- Final consolidated implementation in `Main_Checked_Functions.py`
+- Color configuration integration via `CL_Colors.py`
+- Documentation updates and project consistency across files
+
+## Final Integration Note
+
+The final game is integrated and run through:
+- `Main.py` -> `gameLoop()` from `Gameloop.py`
+- `Gameloop.py` -> helper functions from `Main_Checked_Functions.py`
+
+This means contributor functions were used as role-based building blocks, and final end-to-end ownership/integration remains under Mubashir.

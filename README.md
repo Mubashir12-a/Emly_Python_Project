@@ -1,95 +1,73 @@
-# Emly_Python_Project:
+# Emly Python Project
 
-## 📁 Project Folder Structure
+CLI Hangman game (single player) built in Python with a modular structure.
 
-```
-EMLY_PYTHON_PROJECT/
-│
-├── Contributors/
-│   ├── Hamaad_Code.py
-│   ├── Mubashir_Code.py
-│   └── Shezan_Code.py
-│
-├── Docs/
-│   └── Mini_Project_Spec_Hangman_(Single_Player).pdf
-│
-├── README/
-│   ├── Data_Structure.md
-│   ├── Program_DryRun.md
-│   ├── Project_Structure_Info.md
-│   └── Role_based_Structure.md
-│
-├── Main.py
-│
-└── README.md
+## Project Structure
+
+```text
+Emly_Python_Project/
+|-- Contributors/
+|-- Docs/
+|-- README/
+|   |-- Data_Structure.md
+|   |-- Program_DryRun.md
+|   |-- Project_Structure_Info.md
+|   `-- Role_based_Structure.md
+|-- CL_Colors.py
+|-- Main.py
+|-- Gameloop.py
+|-- Main_Checked_Functions.py
+`-- README.md
 ```
 
-## Algorithm: Hangman (Single-Player CLI Game)
+## Current Module Roles
 
-#### 1)  Start the program.
-#### 2)  Create a list of words
-            - Example: python, school, laptop, logic.
-#### 3)  Select one word randomly from the list and store it as secret_word.
-#### 4)  Set total allowed attempts to a fixed number (example: 6).
-#### 5)  Create an empty set/list called guessed_letters to store all guessed letters.
-#### 6)  Repeat the following steps while attempts > 0:
-            - 6.1 Display the current word status
-                 For each letter in secret_word:
-                 If the letter is in guessed_letters, display the letter.
-                 Otherwise, display _ (underscore).
+- `Main.py`
+  - Entry point.
+  - Asks the player whether to start the game.
+  - Calls `gameLoop()` from `Gameloop.py`.
 
-            - 6.2 Display remaining attempts.
+- `Gameloop.py`
+  - Controls the game lifecycle.
+  - Initializes game state.
+  - Runs the main loop until win or lose.
+  - Shows final result and wrong guesses.
 
-            - 6.3 Display letters already guessed.
+- `Main_Checked_Functions.py`
+  - Core game helpers:
+    - input and validation
+    - random word selection
+    - guess processing
+    - win/lose checks
+    - word progress display
 
-            - 6.4 Ask the user to enter one letter.
+- `CL_Colors.py`
+  - ANSI color constants used for styled terminal output.
 
-            - 6.5 Convert the input to lowercase.
+## Game Flow
 
-            - 6.6 Validate the input:
-                = If input length is not exactly 1 → show error and go to step 6.
-                - If input is not an alphabet (a–z) → show error and go to step 6.
-                - If the letter is already in guessed_letters → show warning and go to step 6.
+1. Player starts from `Main.py`.
+2. A random secret word is selected from:
+   - `apple`, `banana`, `grapes`, `orange`, `mango`
+3. Attempts are initialized to `5`.
+4. Player enters one-letter guesses.
+5. Correct guesses are revealed in the word progress.
+6. Wrong guesses reduce attempts and are tracked.
+7. Game ends when:
+   - all letters are guessed (win), or
+   - attempts reach `0` (lose).
 
-            - 6.7 Add the letter to guessed_letters.
+## How to Run
 
-            - 6.8 Check the guess:
-                - If the letter exists in secret_word:
-                - Display message “Correct guess”.
-                - Else:
-                    - Reduce attempts by 1.
-                    - Display message “Wrong guess”.
+From the project root:
 
-            - 6.9 Check win condition:
-                - If all letters of secret_word are present in guessed_letters:
-                - Display “You won”.
-                - Display the secret word.
-                - End the loop.
-#### 7)  After loop ends:
-#### 8)  If attempts become 0:
-#### 9)  Display “You lost”.
-#### 10)  Display the secret word.
-#### 11)  Stop the program.
+```bash
+python Main.py
+```
 
+## Notes About Recent Changes
 
-## ✅ Code (Main Program)
-
-### Inside code, clearly show:
-
-- a) Random Words Array
-    - Predefined list of words
-    - Random selection logic
-- b) Guess Handling
-    - Accept one letter
-    - Convert to lowercase
-    - Validate input
-    - Check repeated guesses
-- c) Display Function
-    - Build _ _ a _ _ output
-    - Reveal letters correctly
-- d) Game Loop
-    - Runs until win or attempts = 0
-- e) Win / Lose Logic
-    - All letters revealed → win
-    - Attempts finished → lose
-    Tested by <hammad> - working fine.
+- Game entry now uses `from Gameloop import gameLoop` and calls the function directly.
+- Main loop condition in `Gameloop.py` uses:
+  - continue while `not lose` and `not win`
+- End-of-game summary now displays final result and wrong letters.

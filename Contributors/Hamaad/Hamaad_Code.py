@@ -1,54 +1,29 @@
-# Person 3: Display & Game Loop
+from CL_Colors import *
 
-def displayWordProgress(word, guessed_letters):
-    """
-    Displays the current progress of the word.
-    Guessed letters are shown, others as '_'.
-    """
+def displayWordProgress(word, guessed_letters, attempts_left):
     progress = ""
     for letter in word:
         if letter in guessed_letters:
-            progress += letter + " "
+            progress += " " + letter + " "
         else:
-            progress += "_ "
-    print(progress.strip())
-
-
-def displayGameStatus(attempts_left):
-    """
-    Displays remaining attempts.
-    """
-    print(f"Attempts left: {attempts_left}")
+            progress += " x "
+    print(f"\033[1;30;47m{progress.strip()}  {Red}|-=-=-> Attempts Left: {attempts_left}\033[0m\n")
 
 
 def showFinalResult(is_win, word):
-    """
-    Displays final game result.
-    """
     if is_win:
-        print(f"🎉 Congratulations! You guessed the word: {word}")
+        print(f"{Green}🎉 Congratulations! You guessed the word: {word}{White}")
     else:
-        print(f"❌ Game Over! The word was: {word}")
+        print(f"{Red}❌ Game Over! The word was: {word}{White}")
 
 
-def gameLoop():
-    """
-    Main game loop controller (testing version).
-    Actual logic will be integrated in Main.py
-    """
-    # Hardcoded values for testing
-    word = "apple"
-    guessed_letters = ['a', 'e']
-    attempts_left = 3
+def checkWinCondition(guessed_letters, selected_word):
+    for letter in selected_word:
+        if letter not in guessed_letters:
+            return False
+    return True
 
-    displayWordProgress(word, guessed_letters)
-    displayGameStatus(attempts_left)
-
-    # Simulated final result
-    showFinalResult(True, word)
-
-if __name__ == "__main__":
-    print(displayWordProgress("apple", {"a", "e"}))
-    print(displayGameStatus(3))
-    print(showFinalResult(True, "apple"))
-print("Direct push test by Hamaad")
+def checkLoseCondition(attempts_left):
+    if attempts_left == 0:
+        return True
+    return False
