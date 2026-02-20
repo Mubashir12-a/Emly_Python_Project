@@ -3,23 +3,25 @@ from CL_Colors import *
 
 #-----------------------------------------------------------------------------------------------------------------------
 def getUserGuess(guessed_letters, Wrong_letters):
-    guess = input(f"{Magenta}Enter your guess: {White}").strip().lower()
+        
+    while True:
+        guess = input(f"{Magenta}Enter your guess: {White}").strip().lower()
     
-    #⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-    #Dev use only:
-    if guess == 'mm1':
-        exit(0)
-    #⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+        #⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+        #Dev use only:
+        if guess == 'mm1':
+            exit(0)
+        #⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
     
-    if validateGuess(guess):        
-        if isRepeatedGuess(guess, guessed_letters, Wrong_letters):
-            print(f"{Red}⚠️  User guess is repeated{White}")
-            return False
+        if validateGuess(guess):        
+            if isRepeatedGuess(guess, guessed_letters, Wrong_letters):
+                print(f"{Red}⚠️  User guess is repeated{White}")
+                continue
+            else:
+                return guess
         else:
-            return guess
-    else:
-        print(f"{Red}user guess is invalid! Try again{White}")
-        return False
+            print(f"{Red}user guess is invalid! Try again{White}")
+            continue
 #-----------------------------------------------------------------------------------------------------------------------
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #-----------------------------------------------------------------------------------------------------------------------        
@@ -52,9 +54,8 @@ def processGuess(guess, secret_word, guessed_letters, wrong_letters, attempts_le
             guessed_letters.add(guess)
             print(f"{Green}Correct Guess!{White}\n")
             return guessed_letters, wrong_letters, attempts_left
-    if guess != False:
-        wrong_letters.add(guess)
-        print(f"{Red}⚠️  Wrong Guess!{White}\n")
+    wrong_letters.add(guess)
+    print(f"{Red}⚠️  Wrong Guess!{White}\n")
     attempts_left -= 1
     return guessed_letters, wrong_letters, attempts_left
 #-----------------------------------------------------------------------------------------------------------------------
