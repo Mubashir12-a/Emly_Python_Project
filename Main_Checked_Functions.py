@@ -7,15 +7,13 @@ def getUserGuess(guessed_letters, Wrong_letters):
     
     #⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
     #Dev use only:
-    if guess == 'm':
+    if guess == 'mm1':
         exit(0)
     #⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
     
-    if validateGuess(guess):
-        print(f"{Green}Correct Guess!{White}")
-        
+    if validateGuess(guess):        
         if isRepeatedGuess(guess, guessed_letters, Wrong_letters):
-            print(f"{Red}user guess is repeated{White}")
+            print(f"{Red}⚠️ User guess is repeated{White}")
             return guess
         else:
             return guess
@@ -52,11 +50,11 @@ def processGuess(guess, secret_word, guessed_letters, wrong_letters, attempts_le
     for letter in secret_word:
         if guess == letter:
             guessed_letters.add(guess)
-            # print("Correct guess!")
+            print(f"{Green}Correct Guess!{White}\n")
             return guessed_letters, wrong_letters, attempts_left
     wrong_letters.add(guess)
     attempts_left -= 1
-    # print("Wrong guess!")
+    print(f"{Red}⚠️ Wrong Guess!{White}\n")
     return guessed_letters, wrong_letters, attempts_left
 #-----------------------------------------------------------------------------------------------------------------------
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

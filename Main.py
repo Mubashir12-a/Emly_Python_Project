@@ -25,7 +25,7 @@ while(True):
     
     #⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
     #Dev use only:
-    if Player_Mood == 'm':
+    if Player_Mood == 'mm1':
         exit(0)
     #⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
     
